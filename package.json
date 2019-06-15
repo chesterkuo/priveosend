@@ -1,0 +1,20 @@
+{
+  "name": "priveosend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "b58": "^4.0.3",
+    "bluebird": "^3.5.5",
+    "concat-stream": "^2.0.0",
+    "eosjs-ecc-priveos": "^4.0.6",
+    "formidable": "^1.2.1",
+    "priveos": "^0.2.1",
+    "restify": "^8.3.3"
+  }
+}
