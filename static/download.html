@@ -8,55 +8,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js" integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
 
-      <script>
-        let app
-        let scatter
-        let eos
-        window.onload = function() {
-          app = new Vue({
-            el: '#app',
-            data: {
-              xxx: "Ohai",
-              loggedIn: false,
-              account: null,
-              link: null,
-            },
-            computed: {
-              login_caption: function() {
-                if(this.loggedIn) {
-                  return `Logout ${this.account.name}`
-                } else {
-                  return `Login`
-                }
-              }
-            },
-            methods: {
-              async loginout(event) {
-                if(this.loggedIn) {
-                  await logout()
-                  this.loggedIn = false
-                } else {
-                  await login()
-                  this.loggedIn = true
-                  await download()
-                }
-              },
-              async upload(event) {
-                event.preventDefault()
-                do_upload()
-              },
-            },
-          })
-          
-          /* Login automatically on page reload */
-          app.loginout()
-          
-        }
-        
-        
-        
-        
-      </script>
     </head>
     
     <body>

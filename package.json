@@ -12,9 +12,8 @@
     "b58": "^4.0.3",
     "bluebird": "^3.5.5",
     "concat-stream": "^2.0.0",
-    "eosjs-ecc-priveos": "^4.0.6",
+    "eosjs-ecc-priveos": "^4.0.7",
     "formidable": "^1.2.1",
-    "priveos": "^0.2.1",
     "restify": "^8.3.3"
   }
 }

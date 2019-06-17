@@ -5,62 +5,15 @@
       <meta name="viewport" content="initial-scale=1.0">
       
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha256-zVUlvIh3NEZRYa9X/qpNY8P1aBy0d4FrI7bhfZSZVwc=" crossorigin="anonymous" />
-
+      <link rel="stylesheet" href="/static/styles.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js" integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
 
-      <script>
-        let app
-        let scatter
-        let eos
-        window.onload = function() {
-          app = new Vue({
-            el: '#app',
-            data: {
-              xxx: "Ohai",
-              loggedIn: false,
-              account: null,
-              link: null,
-            },
-            computed: {
-              login_caption: function() {
-                if(this.loggedIn) {
-                  return `Logout ${this.account.name}`
-                } else {
-                  return `Login`
-                }
-              }
-            },
-            methods: {
-              async loginout(event) {
-                if(this.loggedIn) {
-                  await logout()
-                  this.loggedIn = false
-                } else {
-                  await login()
-                  this.loggedIn = true
-                }
-              },
-              async upload(event) {
-                event.preventDefault()
-                do_upload()
-              },
-            },
-          })
-          
-          /* Login automatically on page reload */
-          app.loginout()
-          
-        }
-        
-        
-        
-        
-      </script>
+      
     </head>
     
     <body>
       <div class="container">
-        <div id="app">  
+        <div id="app" v-cloak>  
           <button @click="loginout">{{ login_caption }}</button>
           <h1>Upload File</h1>
           <form>
@@ -95,7 +48,7 @@
       
       
       
-      <script src="https://cdn.jsdelivr.net/npm/eosjs-ecc-priveos@4.0.6/lib/eosjs-ecc.min.js" integrity="sha256-gKOXIHdc3iuYlN3vzJackSybAqb+EFLHQ4STHuXtjc0=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/eosjs-ecc-priveos@latest/lib/eosjs-ecc.min.js" crossorigin="anonymous"></script>
       
       <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js" integrity="sha256-lY6On2sTkCEB0x41QX4Tgh6ofUV3qrk3TMIbJKGN57Q=" crossorigin="anonymous"></script>
       
@@ -106,9 +59,10 @@
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha256-IeI0loa35pfuDxqZbGhQUiZmD2Cywv1/bdqiypGW46o=" crossorigin="anonymous"></script>
             
-      <script src="https://cdn.jsdelivr.net/npm/priveos@0.2.1/dist/browser/priveos.js" integrity="sha256-WNjUm4w+r1VJP74cBN2sMETDMr4ktF190uamHR7/mz4=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/priveos@v0.2.2/dist/browser/priveos.js" crossorigin="anonymous"></script>
             
       <script src="/static/xxx.js"></script>
+
 
     </body>
     

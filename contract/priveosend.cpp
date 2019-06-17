@@ -10,5 +10,11 @@ ACTION priveosend::upload(const name sender, const checksum256 hash, const std::
     file.filename = filename;
     file.mime = mime;
     file.created_at = current_time_point();
+    file.user = sender;
   });
+}
+
+ACTION priveosend::admclear(const name sender) {
+  require_auth(_self);
+  erase_all(files);
 }

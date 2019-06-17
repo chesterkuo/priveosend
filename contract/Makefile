@@ -18,6 +18,9 @@ setup:
 
 prepare:
 	$(CLEOS) push action priveosrules prepare '["$(CONTRACT_ACCOUNT)", "4,EOS"]' -p $(CONTRACT_ACCOUNT)
+
+admclear:
+	$(CLEOS) push action $(CONTRACT_ACCOUNT) admclear '["$(CONTRACT_ACCOUNT)"]' -p $(CONTRACT_ACCOUNT)
 	
 deposit:
 	$(CLEOS) transfer $(CONTRACT_ACCOUNT) priveosrules "1.0000 EOS" -p $(CONTRACT_ACCOUNT)

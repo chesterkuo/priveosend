@@ -30,8 +30,12 @@ async function login() {
   const requiredFields = { accounts:[network] }
   await scatter.getIdentity(requiredFields)
   const account = scatter.identity.accounts.find(x => x.blockchain === 'eos')
+  if(!account) {
+    throw "No Scatter account found"
+  }
+  console.log(`setting app.account to ${account}`)
   app.account = account
-  console.log("Scatter account: ", account)
+  console.log("Scatter account: ", app.account)
   const eosOptions = { expireInSeconds:60 }
   eos = scatter.eos(network, Eos, eosOptions)
 }
@@ -98,4 +102,57 @@ async function get_priveos() {
   let priveos = new Priveos(config)
   return priveos
 }
+
+let app
+let scatter
+let eos
+function setup() {
+  
+    app = new Vue({
+      el: '#app',
+      data: {
+        xxx: "Ohai",
+        loggedIn: false,
+        account: null,
+        link: null,
+      },
+      computed: {
+        login_caption: function() {
+          console.log(`login_caption: ${this.account}`)
+          if(this.loggedIn) {
+            return `Logout ${this.account.name}`
+          } else {
+            return `Login`
+          }
+        }
+      },
+      methods: {
+        async loginout(event) {
+          if(this.loggedIn) {
+            await logout()
+            this.loggedIn = false
+          } else {
+            await login()
+            this.loggedIn = true
+            if(typeof download !== 'undefined') {
+              await download()
+            }
+          }
+        },
+        async upload(event) {
+          event.preventDefault()
+          try {
+            await do_upload()
+          } catch(e) {
+            alert(e)
+          }
+        },
+      },
+    })
+    
+    /* Login automatically on page reload */
+    app.loginout()
+}
+
+setup()
 

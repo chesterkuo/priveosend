@@ -17,6 +17,7 @@ CONTRACT priveosend : public contract {
       std::string mime;
       checksum256 hash;
       time_point created_at;
+      name user;
       
       uint64_t primary_key()const { return id; }
       
@@ -28,4 +29,14 @@ CONTRACT priveosend : public contract {
     file_index files;
         
     ACTION upload(const name sender, const checksum256 hash, const std::string filename, const std::string mime);
+    ACTION admclear(const name sender);
+  
+  private:
+    template<typename T>
+    static void erase_all(T& table) {
+      auto itr = table.begin();
+      while(itr != table.end()) {
+        itr = table.erase(itr);
+      }
+    }
 };
